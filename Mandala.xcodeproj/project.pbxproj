@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0546D84E25DA961E00E13CD5 /* ImageSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0546D84D25DA961E00E13CD5 /* ImageSelector.swift */; };
 		05A8449F25D40FFE00E68B9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A8449E25D40FFE00E68B9A /* AppDelegate.swift */; };
 		05A844A125D40FFE00E68B9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A844A025D40FFE00E68B9A /* SceneDelegate.swift */; };
 		05A844A325D40FFE00E68B9A /* MoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A844A225D40FFE00E68B9A /* MoodSelectionViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0546D84D25DA961E00E13CD5 /* ImageSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelector.swift; sourceTree = "<group>"; };
 		05A8449B25D40FFE00E68B9A /* Mandala.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mandala.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05A8449E25D40FFE00E68B9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05A844A025D40FFE00E68B9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				05CB1C2725D97CAA00890E20 /* UIImage+Mandala.swift */,
 				05CB1C2B25D9B67500890E20 /* MoodListViewController.swift */,
 				05CB1C2E25D9BB7E00890E20 /* MoodsConfigurable.swift */,
+				0546D84D25DA961E00E13CD5 /* ImageSelector.swift */,
 			);
 			path = Mandala;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				05A8449F25D40FFE00E68B9A /* AppDelegate.swift in Sources */,
 				05CB1C2425D97BDA00890E20 /* UIColor+Mandala.swift in Sources */,
 				05CB1C2825D97CAA00890E20 /* UIImage+Mandala.swift in Sources */,
+				0546D84E25DA961E00E13CD5 /* ImageSelector.swift in Sources */,
 				05A844A125D40FFE00E68B9A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

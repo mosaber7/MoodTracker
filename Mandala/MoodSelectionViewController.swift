@@ -8,34 +8,17 @@
 import UIKit
 
 class MoodSelectionViewController: UIViewController {
-    
-    @IBOutlet var stackView: UIStackView!
+
+    @IBOutlet var moodSelector: ImageSelector!
     @IBOutlet var addMoodButton: UIButton!
     
     var moods: [Mood] = []{
         didSet {
+            moodSelector.images = moods.map{ $0.image }
             currentMood = moods.first
-            moodButtons = moods.map { mood in
-                let moodButton = UIButton()
-                moodButton.setImage(mood.image, for: .normal)
-                moodButton.imageView?.contentMode = .scaleAspectFit
-                moodButton.adjustsImageWhenHighlighted = false
-                moodButton.addTarget(self,action: #selector(moodSelectionChanged(_:)), for: .touchUpInside)
-                return moodButton
-            }
         }
     }
-    var moodButtons: [UIButton] = []{
-        didSet{
-            oldValue.forEach{
-                $0.removeFromSuperview()
-            }
-            moodButtons.forEach{
-                stackView.addArrangedSubview($0)
-            }
-            
-        }
-    }
+    
     var currentMood: Mood? {
         didSet{
             guard let currentMood = currentMood else {
@@ -69,11 +52,8 @@ class MoodSelectionViewController: UIViewController {
         
     }
     
-    @objc func moodSelectionChanged(_ sender: UIButton){
-        
-        guard let selectedIndex = moodButtons.firstIndex(of: sender) else {
-            preconditionFailure("error finiding the button")
-        }
+    @IBAction private func moodSelectionChanged(_ sender: ImageSelector){
+        let selectedIndex = sender.selectedIndex
         currentMood = moods[selectedIndex]
         
     }
