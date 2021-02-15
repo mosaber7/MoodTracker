@@ -31,6 +31,8 @@ class ImageSelector: UIControl {
             let imageView = imageButtons[selectedIndex]
             
             highligtViewXConstraint = highlightView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
+        
+            highlightView.backgroundColor = highlightColor(forIndex: selectedIndex)
         }
         
         
@@ -42,7 +44,6 @@ class ImageSelector: UIControl {
             }
             imageButtons.forEach{
                 selectorStackView.addArrangedSubview($0)
-                print("done")
             }
         }
     }
@@ -51,7 +52,6 @@ class ImageSelector: UIControl {
         didSet{
             imageButtons = images.map { image in
                 let imageButton = UIButton()
-                print(image)
                 imageButton.setImage(image, for: .normal)
                 imageButton.imageView?.contentMode = .scaleAspectFit
                 imageButton.adjustsImageWhenHighlighted = false
@@ -64,19 +64,32 @@ class ImageSelector: UIControl {
     }
     
     private let highlightView: UIView = {
+        
         let view = UIView()
         
-        view.backgroundColor = view.tintColor
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
+    var highlightColors: [UIColor] = []{
+        didSet{
+            highlightView.backgroundColor = highlightColor(forIndex: selectedIndex)
+        }
+    }
+    
+    
     @objc private func imageButtonTapped(_ sender: UIButton){
+        
         guard let buttonIndex = imageButtons.firstIndex(of: sender) else {
             preconditionFailure("the images and buttons are not parallel")
         }
-        selectedIndex = buttonIndex
+        let selectedAnimator = UIViewPropertyAnimator(duration: 0.3,dampingRatio: 0.5 ,animations: {
+            self.selectedIndex = buttonIndex
+            self.layoutIfNeeded()
+        })
+        selectedAnimator.startAnimation()
+        
         sendActions(for: .valueChanged)
         
         
@@ -98,9 +111,17 @@ class ImageSelector: UIControl {
                                      selectorStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
                                      selectorStackView.topAnchor.constraint(equalTo: topAnchor),
                                      highlightView.heightAnchor.constraint(equalTo: highlightView.widthAnchor),
-                                             highlightView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
-                                             highlightView.centerYAnchor
-                                                 .constraint(equalTo: selectorStackView.centerYAnchor)])
+                                     highlightView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
+                                     highlightView.centerYAnchor
+                                        .constraint(equalTo: selectorStackView.centerYAnchor)])
+    }
+    
+    private func highlightColor(forIndex index: Int) -> UIColor{
+        guard index >= 0 && index < highlightColors.count else {
+            return UIColor.blue.withAlphaComponent(0.6)
+        }
+        return highlightColors[index]
+        
     }
     
     override func layoutSubviews() {
