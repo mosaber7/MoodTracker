@@ -52,6 +52,7 @@ class MoodSelectionViewController: UIViewController {
     var moodsConfigurable: MoodsConfigurable!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         switch segue.identifier {
         case "embedContainerViewController":
             guard let moodsConfigurable = segue.destination as? MoodsConfigurable else {
@@ -68,22 +69,29 @@ class MoodSelectionViewController: UIViewController {
         
     }
     
-    
-    
-    @objc func moodSelectionChanged(_ sender: UIButton) {
-        guard let selectedIndex = moodButtons.firstIndex(of: sender) else {
-            preconditionFailure(
-                "Unable to find the tapped button in the buttons array.")
-        }
+    @objc func moodSelectionChanged(_ sender: UIButton){
         
+        guard let selectedIndex = moodButtons.firstIndex(of: sender) else {
+            preconditionFailure("error finiding the button")
+        }
         currentMood = moods[selectedIndex]
+        
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         moods = [.happy, .angry, .confused, .crying, .goofy, .meh, .sad]
         addMoodButton.layer.cornerRadius = addMoodButton.bounds.height/2
         
+    }
+    
+    @IBAction func addMoodTapped(_ sender: Any){
+        guard let currentMood = currentMood else {
+            return
+        }
+        let moodEntry = MoodEntry(mood: currentMood, timeStamp: Date())
+        moodsConfigurable.add(moodEntry)
     }
     
     

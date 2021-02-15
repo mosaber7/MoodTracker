@@ -67,7 +67,7 @@
                                 </connections>
                             </containerView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24b-dK-vA2">
-                                <rect key="frame" x="0.0" y="810" width="414" height="66"/>
+                                <rect key="frame" x="0.0" y="830" width="414" height="66"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lwd-G0-08A">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dck-Zv-NJA">
-                                <rect key="frame" x="103.5" y="742" width="207" height="48"/>
+                                <rect key="frame" x="103.5" y="762" width="207" height="48"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="QCx-p5-UjW"/>
@@ -97,6 +97,9 @@
                                 <state key="normal" title="Add Mood">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addMoodTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UgS-US-2X3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -109,7 +112,7 @@
                             <constraint firstItem="24b-dK-vA2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jj6-rY-GDt"/>
                             <constraint firstAttribute="trailing" secondItem="24b-dK-vA2" secondAttribute="trailing" id="Kgb-zM-8oB"/>
                             <constraint firstItem="24b-dK-vA2" firstAttribute="top" secondItem="Dck-Zv-NJA" secondAttribute="bottom" constant="20" id="T2B-W9-xa6"/>
-                            <constraint firstAttribute="bottom" secondItem="24b-dK-vA2" secondAttribute="bottom" constant="20" id="gXr-Nz-5R3"/>
+                            <constraint firstAttribute="bottom" secondItem="24b-dK-vA2" secondAttribute="bottom" id="gXr-Nz-5R3"/>
                             <constraint firstItem="Dck-Zv-NJA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="gku-Zy-2mx"/>
                             <constraint firstAttribute="bottom" secondItem="juW-pp-eCJ" secondAttribute="bottom" id="hMX-u5-wzY"/>
                         </constraints>
